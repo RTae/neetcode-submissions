@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int L = 0;
+        int R = nums.size();
+
+        while(L<=R) {
+            int mid = (L+R)/2;
+            
+            if(target > arr[mid]) {
+                L = mid + 1;
+            }
+            else if (target < arr[mid]) {
+                R = mid - 1;
+            } else {
+                return mid
+            }
+        
+        }
+
+        return -1;
+    }
+};
