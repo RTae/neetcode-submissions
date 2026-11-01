@@ -1,0 +1,24 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        # the idea is we can use two pointer to keep skrick each paarrale
+        l,r = 0, len(matrix)-1
+
+        while l < r:
+            for i in range(r-l):
+                top, bottom=l,r
+
+                # save topleft
+                topleft=matrix[top][l+i]
+                # move bottom left into top left
+                matrix[top][l+i]=matrix[bottom-i][l]
+                # move bottom right into bottom left 
+                matrix[bottom-i][l]=matrix[bottom][r-i]
+                # move top right into bottom right
+                matrix[bottom][r-i]=matrix[top+i][r]
+                # move top left into top right
+                matrix[top+i][r]=topleft
+            
+            r-=1
+            l+=1
+
+        # there is a simple version by reverse a matrix and then do a transpose
